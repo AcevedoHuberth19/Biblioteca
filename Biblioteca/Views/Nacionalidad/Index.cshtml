@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Biblioteca.Models.Biblioteca.Nacionalidad>
+
+@{
+    ViewBag.Title = "Nacionalidad";
+}
+
+<hr />
+<div class="row">
+
+    <div id="ContParcial" class="col-sm-6 col-md-6 col-lg-6" >
+        @Html.Partial("~/Views/Nacionalidad/Create.cshtml", new Biblioteca.Models.Biblioteca.Nacionalidad())        
+    </div>
+
+    <div class="table-responsive col-sm-6 col-md-6 col-lg-6">
+        <table class="table text-center" id="Lista">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Abreviatura)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayName("Acciones")
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Abreviatura)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descripcion)
+                        </td>
+                        <td>
+                            @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "btn btn-warning fas fa-edit" })
+                            @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "btn btn-info fas fa-eye" })
+                            @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "btn btn-danger fas fa-trash-alt" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+<!--<div class="modal fade " id="ModalNacionalidad" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Nacionalidad</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label>Aca va la vista Parcial</label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+
+
+@section Scripts
+{
+    <script src="~/Scripts/ScriptCreados/Nacionalidad/IndexJS.js"></script>
+}
+
+
+

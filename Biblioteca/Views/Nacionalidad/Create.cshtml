@@ -1,0 +1,59 @@
+﻿@model Biblioteca.Models.Biblioteca.Nacionalidad
+
+@using (Html.BeginForm("Create", "Nacionalidad", FormMethod.Post, new { id = "FormNacionalidad" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+<div class="card bg-success">
+    <div class="card-header text-white">Nueva Nacionalidad</div>
+    <div class="card-body bg-light">
+
+        <div class="row">
+            <div class="col col-sm-12 col-md-12">
+
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-align-justify"></i></span>
+                    <span class="input-group-text">Abreviatura</span>
+                    @Html.EditorFor(model => model.Abreviatura, new { htmlAttributes = new { @class = "form-control text-center", @placeholder = "Ejemplo: Ni", @maxlength = "4", @style = "max-width:100%;" } })
+                    @Html.ValidationMessageFor(model => model.Abreviatura, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col col-sm-12 col-md-12">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-align-justify"></i></span>
+                    <span class="input-group-text">Descripción</span>
+                    @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control text-center", @placeholder = "Ejemplo: Nicaragua", @maxlength = "4", @style = "max-width:100%;" } })
+                    @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <hr />
+
+    </div>
+
+    <div class="card-footer text-center">
+
+        <div class="row">
+            <div class="col col-sm-6 col-md-6">
+                <button type="button" class="btn btn-primary" id="Guardar"><i class="fas fa-save"></i> Guardar</button>
+            </div>
+
+            <div class="col col-sm-6 col-md-6">
+                <button class="btn btn-danger" id="Cancelar"><i class="fas fa-window-close"></i> Cancelar</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
